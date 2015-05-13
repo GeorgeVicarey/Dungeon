@@ -1,0 +1,12 @@
+TODO:
+
+add enemies left
+
+timer
+
+change patrol state to match rooms.
+
+power up?
+
+score
+
