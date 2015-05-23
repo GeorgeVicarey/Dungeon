@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class MapGen : MonoBehaviour {
 	public Transform tile;
+	public Transform border;
 	public int width, height, noOfRooms, roomWidthMin = 5, roomWidthMax = 10, roomHeightMin = 20 , roomHeightMax = 50;
 
 	private Tile[,] tiles;
@@ -79,14 +80,6 @@ public class MapGen : MonoBehaviour {
 			for (int x = (int)rooms[i].pos.x; x < (int)rooms[i].pos.x + rooms[i].width; x++ ) {
 				for (int y = (int)rooms[i].pos.y; y < (int)rooms[i].pos.y + rooms[i].height; y++ ) {
 					tiles[x,y].pos = new Vector2(x, y);
-					
-					if(x == (int)rooms[i].pos.x || y == (int)rooms[i].pos.y ||
-					   x == (int)rooms[i].pos.x + rooms[i].width - 1 || y == (int)rooms[i].pos.y + rooms[i].height - 1)
-					{
-						tiles[x,y].color = Color.black;
-						tiles[x,y].type = Tile.Type.Border;
-					}
-
 					if(x == rooms[i].doorX && y == rooms[i].doorY)
 					{
 						tiles[x,y].color = Color.grey;
@@ -100,14 +93,39 @@ public class MapGen : MonoBehaviour {
 				}
 			}
 		}
+
+		setBorders ();
+	}
+
+	void setBorders() {	
+		for (int x = 0; x < width; x++ ) {
+			for (int y = 0; y < height; y++ ) {
+				if (tiles[x,y].type == Tile.Type.Room) {
+					if (tiles[x + 1,y].type == Tile.Type.Blank ||
+					    tiles[x - 1,y].type == Tile.Type.Blank ||
+					    tiles[x,y + 1].type == Tile.Type.Blank ||
+					    tiles[x,y - 1].type == Tile.Type.Blank ) {
+							tiles[x,y].type = Tile.Type.Border;
+					}
+				}
+			}
+		}
 	}
 
 	void renderTiles() {
 		for (int x = 0; x < width; x++ ) {
 			for (int y = 0; y < height; y++ ) {
-				Transform t = (Transform)GameObject.Instantiate(tile, new Vector2(x, y), Quaternion.identity);
-				SpriteRenderer SR =  t.GetComponent<SpriteRenderer>();
-				SR.color = tiles[x, y].color;
+				if(tiles[x,y].type != Tile.Type.Border) {
+					Transform t = (Transform)GameObject.Instantiate(tile, new Vector2(x, y), Quaternion.identity);
+					SpriteRenderer SR =  t.GetComponent<SpriteRenderer>();
+					SR.color = tiles[x, y].color;
+				}
+				else
+				{
+					Transform t = (Transform)GameObject.Instantiate(border, new Vector2(x, y), Quaternion.identity);
+					SpriteRenderer SR =  t.GetComponent<SpriteRenderer>();
+					SR.color = Color.black;
+				}
 			}
 		}
 	}
