@@ -22,9 +22,9 @@ public class EnemyAI : MonoBehaviour {
     // Patrol variables
     public Transform origin;
     bool isGoingLeft = false;
-    float distance = 5.0f;
+    public float distance = 5.0f;
     bool setNewOrigin = false;
-    bool tileCol = false;
+    
 
     void Awake()
     {
@@ -34,8 +34,9 @@ public class EnemyAI : MonoBehaviour {
 
     void Start()
     {
+        origin = transform;
         chase = false;
-        maxDistance = 5;
+        //maxDistance = 5;
         tar = GameObject.FindGameObjectWithTag("Player");
         target = tar.transform;
     }
@@ -121,7 +122,7 @@ public class EnemyAI : MonoBehaviour {
 
         if (isGoingLeft)
         { 
-            if (distFromStart < -distance)
+            if (distFromStart < distance)
             {
                 SwitchDirection();
             }
@@ -177,7 +178,7 @@ public class EnemyAI : MonoBehaviour {
 
     void OnCollisionEnter2D()
     {
-        isGoingLeft = !isGoingLeft;
+        SwitchDirection();
     }
 }
 

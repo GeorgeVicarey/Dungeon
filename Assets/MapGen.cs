@@ -6,9 +6,12 @@ public class MapGen : MonoBehaviour {
 	public Transform border;
 	public int width, height, noOfRooms, roomWidthMin = 5, roomWidthMax = 10, roomHeightMin = 20 , roomHeightMax = 50;
     public GameObject prefab;
+    public GameObject Player;
 
 	private Tile[,] tiles;
 	public List<Room> rooms;
+
+    public int noOfEnemies;
 
 	// Use this for initialization
 	void Start () {
@@ -36,11 +39,13 @@ public class MapGen : MonoBehaviour {
 		renderTiles ();
 
         placeEnemy();
+
+        Instantiate(Player, new Vector3(width/2 , height/2 , -1), Quaternion.identity);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        EndGame();
 	}
 
 	void genRooms() {
@@ -168,7 +173,16 @@ public class MapGen : MonoBehaviour {
         {
             Vector3 pos = new Vector3(r.pos.x + (r.width/2) ,  r.pos.y + (r.height/2) , -1);
             Instantiate(prefab, pos, Quaternion.identity);
+            noOfEnemies++;
+           
+        }
+    }
 
+    void EndGame()
+    {
+        if (noOfEnemies == 0)
+        {
+            Application.LoadLevel("Boss");
         }
     }
 }

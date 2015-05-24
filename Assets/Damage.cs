@@ -6,10 +6,12 @@ public class Damage : MonoBehaviour {
     public int health = 1;
     public float invuln = 0f;
     int correctlayer;
+    public MapGen map;
 
     void Start()
     {
         correctlayer = gameObject.layer;
+        map = MapGen.FindObjectOfType<MapGen>();
     }
 
     void OnTriggerEnter2D()
@@ -40,5 +42,9 @@ public class Damage : MonoBehaviour {
     void die()
     {
         Destroy(gameObject);
+        if (this.gameObject.tag == "Enemy");
+        {
+            map.noOfEnemies--;
+        }
     }
 }

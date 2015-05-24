@@ -8,6 +8,7 @@ public class PlayerMove : MonoBehaviour
     public float speed = 10f;
     public float rotspeed = 180f;
     Damage mo;
+    public MapGen map;
 
     private Transform _transformCache;
 
@@ -15,11 +16,17 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         mo = GetComponent<Damage>();
+        map = MapGen.FindObjectOfType<MapGen>();
     }
 
     void OnGUI()
     {
         GUI.Label(new Rect(10, 10, 100, 20),"Health: " + mo.health.ToString());
+        if (map == null)
+        {
+            return;
+        }
+        GUI.Label(new Rect(10, 50, 100, 20), "Enemies Left: " + map.noOfEnemies);
     }
 
 
