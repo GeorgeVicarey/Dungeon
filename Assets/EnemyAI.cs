@@ -24,6 +24,7 @@ public class EnemyAI : MonoBehaviour {
     bool isGoingLeft = false;
     float distance = 5.0f;
     bool setNewOrigin = false;
+    bool tileCol = false;
 
     void Awake()
     {
@@ -139,6 +140,10 @@ public class EnemyAI : MonoBehaviour {
             dir1.Normalize();
 
             myTransform.position += new Vector3(-1.0f,0,0) * speed * Time.deltaTime;
+            if (tileCol)
+            {
+                SwitchDirection();
+            }
         }
         else
         {
@@ -163,6 +168,10 @@ public class EnemyAI : MonoBehaviour {
 
             
             myTransform.position += new Vector3(1.0f, 0, 0) * speed * Time.deltaTime;
+            if (tileCol)
+            {
+                SwitchDirection();
+            }
         }
     }
 
@@ -171,6 +180,7 @@ public class EnemyAI : MonoBehaviour {
     {
         isGoingLeft = !isGoingLeft;
     }
+
 }
 
 

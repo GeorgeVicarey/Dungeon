@@ -5,10 +5,11 @@ public class MapGen : MonoBehaviour {
 	public Transform tile;
 	public Transform border;
 	public int width, height, noOfRooms, roomWidthMin = 5, roomWidthMax = 10, roomHeightMin = 20 , roomHeightMax = 50;
+    public GameObject prefab;
 
 	private Tile[,] tiles;
-	private List<Room> rooms;
-	
+	public List<Room> rooms;
+
 	// Use this for initialization
 	void Start () {
 		//Random.seed = 974379850;
@@ -32,7 +33,9 @@ public class MapGen : MonoBehaviour {
 
 		modelRooms ();
 
-		renderTiles (); 
+		renderTiles ();
+
+        placeEnemy();
 	}
 	
 	// Update is called once per frame
@@ -158,6 +161,16 @@ public class MapGen : MonoBehaviour {
 		         rooms[a].pos.x > rooms[b].pos.x + rooms[b].width || 
 		         rooms[a].pos.y > rooms[b].pos.y + rooms[b].height);
 	}
+
+    void placeEnemy()
+    {
+        foreach (Room r in rooms)
+        {
+            Vector3 pos = new Vector3(r.pos.x + (r.width/2) ,  r.pos.y + (r.height/2) , -1);
+            Instantiate(prefab, pos, Quaternion.identity);
+
+        }
+    }
 }
 
 
