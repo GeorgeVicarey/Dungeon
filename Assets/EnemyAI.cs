@@ -140,10 +140,6 @@ public class EnemyAI : MonoBehaviour {
             dir1.Normalize();
 
             myTransform.position += new Vector3(-1.0f,0,0) * speed * Time.deltaTime;
-            if (tileCol)
-            {
-                SwitchDirection();
-            }
         }
         else
         {
@@ -168,10 +164,8 @@ public class EnemyAI : MonoBehaviour {
 
             
             myTransform.position += new Vector3(1.0f, 0, 0) * speed * Time.deltaTime;
-            if (tileCol)
-            {
-                SwitchDirection();
-            }
+            
+
         }
     }
 
@@ -181,6 +175,10 @@ public class EnemyAI : MonoBehaviour {
         isGoingLeft = !isGoingLeft;
     }
 
+    void OnCollisionEnter2D()
+    {
+        isGoingLeft = !isGoingLeft;
+    }
 }
 
 
