@@ -62,23 +62,23 @@ public class MapGen : MonoBehaviour {
 			// 0 = north, 1 = east, 2 = south, 3 = west
 			if (side == 0) 
 			{
-				rooms[i].doorX = Random.Range((int)rooms[i].pos.x, (int)rooms[i].pos.x + rooms[i].width - 1);
+				rooms[i].doorX = Random.Range((int)rooms[i].pos.x + 1, (int)rooms[i].pos.x + rooms[i].width - 2);
 				rooms[i].doorY = (int)rooms[i].pos.y + rooms[i].height - 1;
 			}
 			else if (side == 1)
 			{
 				rooms[i].doorX = (int)rooms[i].pos.x + rooms[i].width - 1;
-				rooms[i].doorY = Random.Range((int)rooms[i].pos.y, (int)rooms[i].pos.y  + rooms[i].height - 1);
+				rooms[i].doorY = Random.Range((int)rooms[i].pos.y + 1, (int)rooms[i].pos.y  + rooms[i].height - 2);
 			}
 			else if (side == 2)
 			{
-				rooms[i].doorX = Random.Range((int)rooms[i].pos.x, (int)rooms[i].pos.x + rooms[i].width - 1);
+				rooms[i].doorX = Random.Range((int)rooms[i].pos.x + 1, (int)rooms[i].pos.x + rooms[i].width - 2);
 				rooms[i].doorY = (int)rooms[i].pos.y;
 			}
 			else if (side == 3)
 			{
 				rooms[i].doorX = (int)rooms[i].pos.x;
-				rooms[i].doorY = Random.Range((int)rooms[i].pos.y, (int)rooms[i].pos.y  + rooms[i].height - 1);
+				rooms[i].doorY = Random.Range((int)rooms[i].pos.y + 1, (int)rooms[i].pos.y  + rooms[i].height - 2);
 			}
 		}
 	}
