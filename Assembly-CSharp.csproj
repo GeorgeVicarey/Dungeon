@@ -48,8 +48,6 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Damage.cs" />
      <Compile Include="Assets\Scripts\EnemyAI.cs" />
-     <Compile Include="Assets\Scripts\EnemyShooting.cs" />
-     <Compile Include="Assets\Scripts\HealthPickup.cs" />
      <Compile Include="Assets\Scripts\MapGen.cs" />
      <Compile Include="Assets\Scripts\MouseAim.cs" />
      <Compile Include="Assets\Scripts\PlayerMove.cs" />
