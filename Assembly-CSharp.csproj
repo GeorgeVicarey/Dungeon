@@ -46,21 +46,18 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BossDamage.cs" />
-     <Compile Include="Assets\BossMap.cs" />
-     <Compile Include="Assets\Damage.cs" />
-     <Compile Include="Assets\EnemyAI.cs" />
-     <Compile Include="Assets\EnemyShooting.cs" />
-     <Compile Include="Assets\HealthPickup.cs" />
-     <Compile Include="Assets\MapGen.cs" />
-     <Compile Include="Assets\MouseAim.cs" />
-     <Compile Include="Assets\PlayerMove.cs" />
-     <Compile Include="Assets\Room.cs" />
-     <Compile Include="Assets\Tile.cs" />
-     <Compile Include="Assets\TimeToLive.cs" />
-     <Compile Include="Assets\Zoom.cs" />
-     <Compile Include="Assets\moveForward.cs" />
-     <None Include="Assets\TODO.txt" />
+     <Compile Include="Assets\Scripts\Damage.cs" />
+     <Compile Include="Assets\Scripts\EnemyAI.cs" />
+     <Compile Include="Assets\Scripts\EnemyShooting.cs" />
+     <Compile Include="Assets\Scripts\HealthPickup.cs" />
+     <Compile Include="Assets\Scripts\MapGen.cs" />
+     <Compile Include="Assets\Scripts\MouseAim.cs" />
+     <Compile Include="Assets\Scripts\PlayerMove.cs" />
+     <Compile Include="Assets\Scripts\Room.cs" />
+     <Compile Include="Assets\Scripts\Tile.cs" />
+     <Compile Include="Assets\Scripts\TimeToLive.cs" />
+     <Compile Include="Assets\Scripts\Zoom.cs" />
+     <Compile Include="Assets\Scripts\moveForward.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
