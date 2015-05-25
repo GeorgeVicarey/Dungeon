@@ -18,8 +18,8 @@ public class MapGen : MonoBehaviour {
 		//Random.seed = 974379850;
 		Debug.Log (Random.seed);
 
+		//Propogate tile array with new instances of Tile so that the area is not empty when it gets used.
 		tiles = new Tile[width, height];
-
 		for (int x = 0; x < width; x++ ) {
 			for (int y = 0; y < height; y++ ) {
 				tiles[x, y] = new Tile();
@@ -28,18 +28,17 @@ public class MapGen : MonoBehaviour {
 			}
 		}
 
+		//Assign rooms as a new List of Room(s)
 		rooms = new List<Room>();
 
+		//Call map gen functions
 		genRooms ();
-
 		roomCollision ();
-
 		modelRooms ();
-
 		renderTiles ();
-
         placeEnemy();
 
+		//place player in center of map
         Instantiate(Player, new Vector3(width/2 , height/2 , -1), Quaternion.identity);
 	}
 	
@@ -48,6 +47,18 @@ public class MapGen : MonoBehaviour {
         EndGame();
 	}
 
+	/**
+	 * Using a Random Number Generator the rooms List is propogated with procedural rooms.
+	 * Up to the value of the noOfRooms variable.
+	 * A room is created by choosing a random X and Y position within the maps bounds.
+	 * The width and height are then set for teh room by getting a random value between a 
+	 * user set min and max width/height.
+	 * Then a color is ranodmly assigned to the room.
+	 * 
+	 * Once a room is generated then a Door location needs to be set .
+	 * This is done by choosing a number from 0-4 which number is chosen dictates which side of 
+	 * the room gets a door. Ocne a side is known then a position along the side is randomly chosen.
+	 */
 	void genRooms() {
 		for (int i = 0; i < noOfRooms; i++) {
 			rooms.Add(new Room());
@@ -82,7 +93,14 @@ public class MapGen : MonoBehaviour {
 			}
 		}
 	}
-	
+
+
+	/**
+	 * Model rooms cycles through each room in the list and translates it's properties
+	 * over to the tiles on the map with which it occupies.
+	 * 
+	 * Once all the rooms have been set as tiles then teh setBorders function can place borders around rooms.
+	 */
 	void modelRooms(){
 		for (int i = 0; i < rooms.Count; i++) {			
 			for (int x = (int)rooms[i].pos.x; x < (int)rooms[i].pos.x + rooms[i].width; x++ ) {
@@ -105,6 +123,12 @@ public class MapGen : MonoBehaviour {
 		setBorders ();
 	}
 
+
+	/**
+	 * Cycles through tiles in the array and checks if any room tiles
+	 * have a neighbouring blank tile and if they do the tile gets set 
+	 * to a border type.
+	 */
 	void setBorders() {	
 		for (int x = 0; x < width; x++ ) {
 			for (int y = 0; y < height; y++ ) {
@@ -120,6 +144,10 @@ public class MapGen : MonoBehaviour {
 		}
 	}
 
+	/**
+	 * Cycles trhough every tile instantiatign a prefab and setting it's render color depending
+	 * on the tiles color.
+	 */
 	void renderTiles() {
 		for (int x = 0; x < width; x++ ) {
 			for (int y = 0; y < height; y++ ) {
@@ -137,7 +165,11 @@ public class MapGen : MonoBehaviour {
 			}
 		}
 	}
-	
+
+	/**
+	 * Cycles though every pair of rooms and checkd for a collision
+	 * if theres overlappign rooms it destroys one of them.
+	 */
 	void roomCollision() {
 		for (int A = 0; A < rooms.Count; A++) {
 			for (int B = 0; B < rooms.Count; B++) {
@@ -158,7 +190,12 @@ public class MapGen : MonoBehaviour {
 			}
 		}
 	}
-	
+
+	/*
+	 * Fucntion used by roomCollision() to see if two rectangles overlap
+	 * 
+	 * @return bool - True if there's a overlap
+	 */
 	bool checkOverlap(int a, int b) 
 	{ 
 		return !(rooms[a].pos.x + rooms[a].width < rooms[b].pos.x || 
@@ -167,6 +204,9 @@ public class MapGen : MonoBehaviour {
 		         rooms[a].pos.y > rooms[b].pos.y + rooms[b].height);
 	}
 
+	/*
+	 * places an enemy in each room.
+	 */
     void placeEnemy()
     {
         foreach (Room r in rooms)
@@ -178,6 +218,9 @@ public class MapGen : MonoBehaviour {
         }
     }
 
+	/*
+	 * an endgame condition is checked if there's 0 enemies left.
+	 */
     void EndGame()
     {
         if (noOfEnemies == 0)
@@ -186,7 +229,3 @@ public class MapGen : MonoBehaviour {
         }
     }
 }
-
-
-
-

@@ -1,0 +1,24 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\EnemyAI.cs">
+    <Files>
+      <File FileName="Assets\PlayerMove.cs" Line="15" Column="30" />
+      <File FileName="Assets\Damage.cs" Line="45" Column="45" />
+      <File FileName="Assets\MapGen.cs" Line="112" Column="19" />
+      <File FileName="Assets\BossMap.cs" Line="1" Column="1" />
+      <File FileName="Assets\EnemyShooting.cs" Line="1" Column="1" />
+      <File FileName="Assets\HealthPickup.cs" Line="1" Column="1" />
+      <File FileName="Assets\moveForward.cs" Line="1" Column="1" />
+      <File FileName="Assets\EnemyAI.cs" Line="41" Column="18" />
+      <File FileName="Assets\BossDamage.cs" Line="1" Column="1" />
+      <File FileName="Assets\Room.cs" Line="1" Column="1" />
+      <File FileName="Assets\TimeToLive.cs" Line="1" Column="1" />
+      <File FileName="Assets\TODO.txt" Line="1" Column="1" />
+      <File FileName="Assets\Zoom.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
