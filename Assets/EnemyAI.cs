@@ -6,7 +6,7 @@ public class EnemyAI : MonoBehaviour {
     // Moving Variables
     public Transform target;
     public float speed = 3f;
-    public int maxDistance;
+    public float maxDistance;
     public Transform myTransform;
     public bool chase;
     public float rotationSpeed = 180.0f;
@@ -36,7 +36,8 @@ public class EnemyAI : MonoBehaviour {
     {
         origin = transform;
         chase = false;
-        //maxDistance = 5;
+        maxDistance = Random.Range(3.0f, 10.0f);
+        shootDistance = Random.Range(1.0f, 3.0f);
         tar = GameObject.FindGameObjectWithTag("Player");
         target = tar.transform;
     }
