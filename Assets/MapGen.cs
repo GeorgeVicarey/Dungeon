@@ -182,7 +182,7 @@ public class MapGen : MonoBehaviour {
     {
         if (noOfEnemies == 0)
         {
-            Application.LoadLevel("Boss");
+            
         }
     }
 }

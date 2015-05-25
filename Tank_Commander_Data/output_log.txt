@@ -12,13 +12,13 @@ Platform assembly: C:\Users\Richard\Desktop\Dungeon\Tank_Commander_Data\Managed\
 Loading C:\Users\Richard\Desktop\Dungeon\Tank_Commander_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Richard\Desktop\Dungeon\Tank_Commander_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\Richard\Desktop\Dungeon\Tank_Commander_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.147 seconds
+- Completed reload, in  0.145 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
 Platform assembly: C:\Users\Richard\Desktop\Dungeon\Tank_Commander_Data\Managed\System.Core.dll (this message is harmless)
-1432575232
+1432577782
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -27,6 +27,10 @@ pew!
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
 Trigger!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+pew!
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 

@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour {
 
     // Patrol variables
     public Transform origin;
-    bool isGoingLeft = false;
+    bool isGoingLeft = true;
     public float distance = 5.0f;
     bool setNewOrigin = false;
     
@@ -118,13 +118,14 @@ public class EnemyAI : MonoBehaviour {
 
     void Patrol()
     {
-        float distFromStart = transform.position.x - origin.position.x;   
+        //float distFromStart = transform.position.x - origin.position.x;   
 
         if (isGoingLeft)
         { 
-            if (distFromStart < distance)
+            if (distance < 0)
             {
                 SwitchDirection();
+                distance = 5;
             }
             Vector3 dir = (origin.position - new Vector3(distance, 0, 0)) - transform.position;
 
@@ -141,12 +142,15 @@ public class EnemyAI : MonoBehaviour {
             dir1.Normalize();
 
             myTransform.position += new Vector3(-1.0f,0,0) * speed * Time.deltaTime;
+
+            distance -= Time.deltaTime;
         }
         else
         {
-            if (distFromStart > distance)
+            if (distance < 0)
             {
                 SwitchDirection();
+                distance = 5;
             }
             Vector3 dir = (origin.position + new Vector3(distance,0,0)) - transform.position;
 
@@ -165,6 +169,8 @@ public class EnemyAI : MonoBehaviour {
 
             
             myTransform.position += new Vector3(1.0f, 0, 0) * speed * Time.deltaTime;
+
+            distance -= Time.deltaTime;
             
 
         }
@@ -176,10 +182,11 @@ public class EnemyAI : MonoBehaviour {
         isGoingLeft = !isGoingLeft;
     }
 
-    void OnCollisionEnter2D()
+   /*void OnCollisionEnter2D()
     {
+        myTransform.position += new Vector3(-3.0f, 0, 0) * speed * Time.deltaTime;
         SwitchDirection();
-    }
+    }*/
 }
 
 
